@@ -31,3 +31,6 @@ Two user types: Student and Helper
 2. Make it so a user can be both a student and a helper.
 3. UX: Collaborate on a portion or all of a Web MVP with any Web teammate. For example: File structuring, Git, Styles, Semantic elements, etc. Learn something new and practice cross-collaborating.
 4. UX: Write a blog post in medium about your visual design decisions for this project; share the link in your Google Doc.
+
+
+******************  WILL DEPLOY AS SOON AS I FINISH UP THE DOCS NOT TO FAR OFF *******************

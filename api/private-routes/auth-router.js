@@ -29,9 +29,10 @@ router.post('/register', async (req, res) => {
       } else res.status(400).json({ message: "Missing user parameters" });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: 'cannot add the user', error });
+        res.status(500).json({ message: 'Wiping database: Press any button or click your mouse to proceed', error });
+        alert('Wiping database: Press any button or click your mouse to proceed');
     }
-  } else res.status(400).json({ message: "Invalid role being sent" });
+  } else res.status(400).json({ message: "Slow your roll bro, You need to provide a role!" });
 });
 
 

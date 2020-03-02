@@ -19,6 +19,6 @@ module.exports = (req, res, next) => {
       }
     });
   } else {
-    res.status(400).json({ message: 'No token provided' });
+    res.status(400).json({ message: 'Go get yourself something ... Or a JWT =)' });
   }
 };

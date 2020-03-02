@@ -298,3 +298,131 @@ There is a staff login =>  username: admin
  *  HTTP/1.1 500 Internal Server Error
  *
  */
+
+
+/**
+ *
+ * @api {get} /users List all users
+ * @apiName ListUsers
+ * @apiGroup Users
+ * @apiVersion 1.0.0
+ *
+ * @apiSuccess (200) {Object} users List of all users
+ * @apiSuccess (200) {Number} id User ID
+ * @apiSuccess (200) {String} username User username
+ * @apiSuccess (200) {String} role User role
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *  {
+ *     "users": [
+ *       {
+ *         "id": 1,
+ *         "username": "lambdastudent",
+ *         "role": "student"
+ *       },
+ *       {
+ *        ...
+ *       }
+ *     ]
+ *  }
+ * 
+ * @apiErrorExample {json} Retrieval error
+ *  HTTP/1.1 500 Internal Server Error
+ *
+ */
+
+
+ /**
+ *
+ * @api {get} /users/tickets Get user's tickets
+ * @apiName GetUserTickets
+ * @apiGroup Users
+ * @apiVersion 1.0.0
+ *
+ * @apiSuccess (200) {Number} ticket_id Assigned ticket ID
+ * @apiSuccess (200) {String} title Assigned ticket title
+ * @apiSuccess (200) {String} description Assigned ticket description
+ * @apiSuccess (200) {String} tried Assigned ticket tried
+ * @apiSuccess (200) {String} category Assigned ticket category
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *  [
+ *    {
+ *    title: "I Cant Help Myself..?",
+ *          description: "I dont know if I can or not, can you know if I want to?",
+ *          tried: "Asking you",
+ *          category: "Ceramics"
+ *    },
+ *    {
+ *      ...
+ *    }
+ *  ]
+ * 
+ * @apiError UnspecifiedRole Role not specified.
+ *
+ * @apiErrorExample {json} Role not specified
+ *  HTTP/1.1 400
+ *  {
+ *    "message": "User role not specified."
+ *  }
+ *
+ * @apiError AssignmentRestricted Ticket assignment restricted.
+ *
+ * @apiErrorExample {json} Ticket assignment restricted
+ *  HTTP/1.1 400
+ *  {
+ *    "message": "Ticket assignment restricted to helpers only."
+ *  }
+ * 
+ * @apiErrorExample {json} Retrieval error
+ *  HTTP/1.1 500 Internal Server Error
+ *
+ */
+
+ 
+/**
+ *
+ * @api {post} /users/tickets/:id/assign Assign a ticket
+ * @apiName AssignTicket
+ * @apiGroup Users
+ * @apiVersion 1.0.0
+ *
+ * @apiParam {Number} id Ticket ID
+ *
+ * @apiSuccess (200) {Number} ticket_id Assigned ticket ID
+ * @apiSuccess (200) {String} title Assigned ticket title
+ * @apiSuccess (200) {String} description Assigned ticket description
+ * @apiSuccess (200) {String} tried Assigned ticket tried
+ * @apiSuccess (200) {String} category Assigned ticket category
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *  {
+ * title: "I Cant Help Myself..?",
+ *   description: "I dont know if I can or not, can you know if I want to?",
+ *   tried: "Asking you",
+ *   category: "Ceramics"
+ *  }
+ * 
+ * @apiError TicketAssigned Ticket already assigned.
+ *
+ * @apiErrorExample {json} Ticket assigned
+ *  HTTP/1.1 400
+ *  {
+ *    "message": "Ticket has already been assigned."
+ *  }
+ *
+ * @apiError AssignmentRestricted Ticket assignment restricted.
+ *
+ * @apiErrorExample {json} Ticket assignment restricted
+ *  HTTP/1.1 400
+ *  {
+ *    "message": "Ticket assignment restricted to helpers only."
+ *  }
+ * 
+ * @apiErrorExample {json} Assignment error
+ *  HTTP/1.1 500 Internal Server Error
+ *
+ */

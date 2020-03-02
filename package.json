@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "description": "MyBackEndDDQ",
   "main": "index.js",
-  "scripts": {
-    "test": "jest --watch",
-    "start": "node index.js",
-    "server": "nodemon index.js"
-  },
   "dependencies": {
     "apidoc": "^0.20.0",
     "bcryptjs": "^2.4.3",
@@ -26,5 +21,30 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "index.js",
+    "build": "index.js",
+    "test": "index.js",
+    "eject": "index.js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  
+  },
+    "engines": {
+      "node": "v12.14.1"
+
+    }
   }
-}
+  

@@ -7,7 +7,6 @@ exports.up = function(knex) {
           .string('title', 128)
           .notNullable();
         tbl.string('description', 512);
-        tbl.string('tried', 512);
         tbl.string('category', 128);
         tbl.string('solution', 1024);
         tbl

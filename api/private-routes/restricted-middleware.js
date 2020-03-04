@@ -1,3 +1,9 @@
+////
+/// @page private-routes/restricted-middleware
+/// 
+/// 
+////
+
 const jwt = require('jsonwebtoken');
 
 const secrets = require('../config/secrets.js');

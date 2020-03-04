@@ -1,9 +1,5 @@
-////
-/// @page private-routes/auth-router
-/// 
 
-
-const router = require('express').Router();
+ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 

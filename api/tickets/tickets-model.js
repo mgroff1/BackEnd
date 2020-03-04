@@ -33,7 +33,7 @@ async function addTicketToStudent(student_id, ticket_id) {
 async function remove(id) {
     return await db('tickets')
         .where({ id })
-        .del();
+          .del();
 }
 
 async function update(id, changes) {

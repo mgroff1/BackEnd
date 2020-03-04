@@ -18,4 +18,4 @@ server.use('/auth', authRouter);
 server.use('/users', restricted, usersRouter);
 server.use('/tickets', restricted, ticketsRouter);
 
-module.exports = server;
+ module.exports = server;

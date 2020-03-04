@@ -34,7 +34,7 @@ async function findStudentTickets(id) {
 
 async function add(user) {
   return await db('users')
-    .insert(user, 'id')
+     .insert(user, 'id')
     .then(([id]) => findById(id));
 }
 

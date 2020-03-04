@@ -1,6 +1,6 @@
 exports.up = function(knex) {
     return knex.schema
-      .createTable('student_tickets', tbl => {
+       .createTable('student_tickets', tbl => {
         tbl.increments();
         tbl
           .integer('student_id')

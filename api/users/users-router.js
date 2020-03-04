@@ -134,7 +134,7 @@ router.delete('/tickets/:id', (req, res) => {
 
     req.user.role === 'student' ?
 
-    Users.findStudentTicketById(id)
+     Users.findStudentTicketById(id)
         .then(ticket => {
             if (ticket) {
                 // Deletes student ticket entry as well as the ticket entry in database

@@ -1,8 +1,3 @@
-////
-/// @page private-routes/restricted-middleware
-/// 
-/// 
-////
 
 const jwt = require('jsonwebtoken');
 

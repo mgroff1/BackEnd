@@ -18,9 +18,9 @@ router.get('/', (req, res) => {
 router.get('/open', (req, res) => {
     Tickets.findBy({ assigned: false })
         .then(tickets => {
-            res.status(200).json(tickets)
+             res.status(200).json(tickets)
         })
-        .catch(err => {
+         .catch(err => {
             res.status(500).json(err)
         });
 });

@@ -4,5 +4,5 @@
         "database": "master",
         "schema": "dbo"
     },
-    "scripts": []
+     "scripts": []
 }

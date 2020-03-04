@@ -3,8 +3,8 @@ exports.seed = function(knex) {
   return knex('tickets')
     .del()
     .then(function() {
-      // Inserts seed entries
-      return knex('tickets').insert([
+       // Inserts seed entries
+       return knex('tickets').insert([
         {
           title: "What In the NPM Is Going On Around Here?",
           description: "I feel like jello",

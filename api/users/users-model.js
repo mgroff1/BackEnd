@@ -80,7 +80,7 @@ async function findStudentTicketById(ticket_id) {
   return await db('student_tickets')
     .select('id', 'student_id', 'ticket_id')
     .where({ ticket_id })
-    .first();
+     .first();
 }
 
 async function removeAssignedTicket(ticket_id) {

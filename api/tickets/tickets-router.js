@@ -39,10 +39,10 @@ router.get('/closed', (req, res) => {
 
 
 router.post('/', (req, res) => {
-    const { title, description, tried, category } = req.body;
+    const { title, description, category } = req.body;
 
     if (req.user.role === 'student') {
-        if (!title || !description || !tried || !category) {
+        if (!title || !description || !category) {
             res.status(400).json({ message: "Missing ticket parameters." });
         } else Tickets.add(req.body)
             .then(ticket => {

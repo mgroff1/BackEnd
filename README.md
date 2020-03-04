@@ -1,36 +1,109 @@
-# DevDesk Queue BackEnd
 
-[Trello](https://trello.com/b/Ww7sTkWq/bw-devdesk2)<br>
-
-[Product Vision](https://aquoco-my.sharepoint.com/:w:/g/personal/evoingram_aquoco_onmicrosoft_com/ER8KdmtwFExNjVuu-ppqSiYB99x9OAHckQcy1oPsJXIz9A?e=6BhAgp)<br>
-
-[Icebreakers](https://aquoco-my.sharepoint.com/:w:/g/personal/evoingram_aquoco_onmicrosoft_com/EewWRgo7_gVFi213R1O2hsoBLil-hJHa8gc3Sm9KfzNYKA?e=JyZxTu)<br>
+First you must either login with a seeded user or register. You will generate a JWT token 
+that will go in your header, at that point the routes open up to you. 
 
 
-## PITCH
-Students at lambda school need a place where they can escalate their concerns and receive help. This app allows an admin to manage help desk tickets that come in from Lambda School Students. It also allows students (A 2nd user type) to submit a help desk ticket, categorize it and post it to the help channel.
-
-## MVP: 
-As a student I want to log in and have the ability to see tickets that are currently open for help. As a student I want to be able to create a new help ticket with a title, description, what I've tried and a category (i.e. React).
-
-As a helper I want to be able to login and see a list of open tickets. As a helper I want to be able to assign a ticket to myself by clicking a "help student" button. As a helper I want to be able to mark the ticket as "resolved", or re-assign the ticket back to the queue if I cannot resolve the ticket.
-
-## Stretch: 
-Build an integrated slack-bot that allows students to submit help tickets through slack. Allow the ability to subscribe to the Queue in slack to be notified if someone opens a ticket. 
-
-## MVP
-Two user types: Student and Helper
-
-1. As a student I want to log in and have the ability to see tickets that are currently open for help. 
-2. As a student I want to be able to create a new help ticket with a title, description, what I've tried and a category (i.e. React).
-3. As a helper I want to be able to login and see a list of open tickets. - As a helper I want to be able to assign a ticket to myself by clicking a "help student" button. 
-4. As a helper I want to be able to mark the ticket as "resolved", or re-assign the ticket back to the queue if I cannot resolve the ticket.
-
-## STRETCH
-1. Build an integrated slack-bot that allows students to submit help tickets through slack. Allow the ability to subscribe to the Queue in slack to be notified if someone opens a ticket. 
-2. Make it so a user can be both a student and a helper.
-3. UX: Collaborate on a portion or all of a Web MVP with any Web teammate. For example: File structuring, Git, Styles, Semantic elements, etc. Learn something new and practice cross-collaborating.
-4. UX: Write a blog post in medium about your visual design decisions for this project; share the link in your Google Doc.
 
 
-******************  WILL DEPLOY AS SOON AS I FINISH UP THE DOCS NOT TO FAR OFF *******************
+
+
+
+************************************************************************
+User functions
+************************************************************************
+function findBy(filter) {
+  return db('users').where(filter);
+}
+
+async function findStudentTickets(id) {
+  return await db('student_tickets as st')
+    .where('student_id', id)
+    .join('tickets as t', 'st.ticket_id', 't.id')
+    .select(
+      'st.ticket_id',
+      't.title',
+      't.description',
+      't.tried',
+      't.category',
+      't.solution'
+    );
+}
+
+async function add(user) {
+  return await db('users')
+    .insert(user, 'id')
+    .then(([id]) => findById(id));
+}
+
+function findById(id) {
+  return db('users')
+    .select('id', 'username', 'role')
+    .where({ id })
+    .first();
+}
+
+async function findStudentTicketById(ticket_id) {
+  return await db('student_tickets')
+    .select('id', 'student_id', 'ticket_id')
+    .where({ ticket_id })
+    .first();
+}
+
+async function removeAssignedTicket(ticket_id) {
+  return await db('assigned_tickets')
+    .where({ ticket_id })
+    .del();
+}
+
+async function removeStudentTicket(ticket_id) {
+  return await db('student_tickets')
+    .where({ ticket_id })
+    .del();
+}
+
+
+
+
+
+************************************************************************
+Ticket functions
+************************************************************************
+function find() {
+    return db('tickets');
+}
+
+function findBy(filter) {
+    return db('tickets').where(filter);
+}
+
+async function add(ticket) {
+    return await db('tickets')
+    .insert(ticket, 'id')
+    .then(([id]) => findById(id));
+}
+
+async function addTicketToStudent(student_id, ticket_id) {
+    return await db('student_tickets')
+        .insert({ student_id, ticket_id}, 'id')
+        .then(() => findById(ticket_id));
+}
+
+async function remove(id) {
+    return await db('tickets')
+        .where({ id })
+        .del();
+}
+
+async function update(id, changes) {
+    return await db('tickets')
+        .where({ id })
+        .update(changes)
+        .then(() => findById(id));
+}
+
+function findById(id) {
+    return db('tickets')
+      .select('id', 'title', 'description')
+      .where({ id })
+      .first();
+}

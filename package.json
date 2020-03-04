@@ -4,7 +4,6 @@
   "description": "MyBackEndDDQ",
   "main": "index.js",
   "dependencies": {
-    "apidoc": "^0.20.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -24,10 +23,7 @@
   },
   "scripts": {
     "server": "nodemon index.js",
-    "start": "index.js",
-    "build": "index.js",
-    "test": "index.js",
-    "eject": "index.js"
+    "start": "index.js"
   },
   "browserslist": {
     "production": [

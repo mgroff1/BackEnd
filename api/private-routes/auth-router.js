@@ -71,12 +71,6 @@ router.post('/api/login', (req, res) => {
       }
     })
 
-
-/// @name generateToken
-/// 
-/// 
-/// @param {any} user - 
-/// @returns {any} - 
 function generateToken(user) {
     const payload = {
       subject: user.id,

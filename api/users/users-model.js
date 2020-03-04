@@ -39,10 +39,8 @@ async function findAssignedTickets(id) {
       'at.ticket_id',
       't.title',
       't.description',
-      't.tried',
       't.category',
-      't.solution'
-    );
+          );
 }
 
 function findBy(filter) {

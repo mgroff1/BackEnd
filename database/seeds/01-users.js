@@ -9,7 +9,7 @@ exports.seed = function(knex) {
       return knex('users').insert([
         {
           username: 'student',
-          password: bcrypt.hashSync('123', 10),
+          password: bcrypt.hashSync('456', 10),
           role: 'student'
         },
         {

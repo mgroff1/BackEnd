@@ -8,12 +8,14 @@ exports.seed = function(knex) {
         {
           title: "What In the NPM Is Going On Around Here?",
           description: "I feel like jello",
-          category: "help"
+          category: "help",
+          open:true
         },
         {
           title: "I Cant Help Myself..?",
           description: "I dont know if I can or not, can you know if I want to?",
-          category: "Ceramics"
+          category: "Ceramics",
+          open:true
         }
       ]);
     });

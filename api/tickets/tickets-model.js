@@ -25,7 +25,7 @@ async function add(ticket) {
 }
 
 async function addTicketToStudent(student_id, ticket_id) {
-    return await db('student_tickets')
+    return await db('student-tickets')
         .insert({ student_id, ticket_id}, 'id')
         .then(() => findById(ticket_id));
 }
@@ -45,7 +45,7 @@ async function update(id, changes) {
 
 function findById(id) {
     return db('tickets')
-      .select('id', 'title', 'description')
+      .select('id', 'title', 'description','open')
       .where({ id })
       .first();
 }

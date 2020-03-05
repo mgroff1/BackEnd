@@ -1,0 +1,178 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mick's Challenge</title>
+    <script>
+document.body.style.display = "none"; // Hide the page until it's finished rendering.
+
+document.createElement("markdown");
+var md_tags = document.getElementsByTagName("markdown"); // Returns array of all markdown tags.
+
+for (var i = 0; i < md_tags.length; i++) { // Iterate through all the tags, and generate the HTML. var
+    md_text=md_tags[i].textContent.replace(/^[^\S\n]+/mg, "" ); // I love regex, so shoot me. var
+    md_div=document.createElement("div"); // Make a new div to replace the fake tag. md_div.id="content" ;
+    md_div.innerHTML=marked(md_text); md_tags[i].parentNode.appendChild(md_div); // Add remove the old raw markdown.
+    md_tags[i].parentNode.removeChild(md_tags[i]); } document.body.style.display="" ; // Show the rendered page.
+
+    </script>
+
+</head>
+
+<body>
+<h1 id="dev_desk_queue-api-doc">Dev_Desk_Queue API Doc</h1>
+<hr>
+<h2 id="deployed-at-https-ddq-backend-herokuapp-com-">deployed at: <a
+        href="https://ddq-backend.herokuapp.com/">https://ddq-backend.herokuapp.com/</a></h2>
+<h2 id="to-begin-you-must-generate-a-token-by-registering-or-logging-in-with-a-seeded-log-in-">To begin you must
+    generate a token by registering or logging in with a seeded log in.</h2>
+<hr>
+<table>
+    <thead>
+        <tr>
+            <th>Register</th>
+            <th>Login</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>url/auth/register</td>
+            <td>url/auth/login</td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="-">-----</h2>
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Seeded login credentials are:</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<p>username:|staff
+    password:|123
+    role:|staff</p>
+<pre><code><span class="hljs-symbol">ie:</span>
+{
+    <span class="hljs-string">"username"</span>:<span class="hljs-string">"staff"</span>,
+    <span class="hljs-string">"password"</span>:<span class="hljs-string">"123"</span>,
+    <span class="hljs-string">"role"</span>:<span class="hljs-string">"staff"</span>
+}
+</code></pre>
+<hr>
+<h2 id="place-token-in-header-and-use-the-routes">Place token in header and use the routes</h2>
+<hr>
+<h1 id="ticket-routes">Ticket Routes</h1>
+<h2 id="method-endpoint-description">Method Endpoint Description</h2>
+<table>
+    <thead>
+        <tr>
+            <th>GET</th>
+            <th>/tickets</th>
+            <th>Returns all tickets</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>GET</td>
+            <td>/tickets/:id</td>
+            <td>Returns ticket by id</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/tickets/user/:id</td>
+            <td>Returns tickets assigned to user</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/tickets</td>
+            <td>Creates a new ticket</td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td>/tickets/:id</td>
+            <td>Updates ticket by id</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/tickets/:id</td>
+            <td>Deletes ticket by id</td>
+        </tr>
+    </tbody>
+</table>
+<h1 id="authentication-routes">Authentication Routes</h1>
+<h2 id="method-endpoint-description">Method Endpoint Description</h2>
+<table>
+    <thead>
+        <tr>
+            <th>GET</th>
+            <th>/auth/users</th>
+            <th>Returns all users</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>GET</td>
+            <td>/users/:id</td>
+            <td>Returns user by id</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>auth/register</td>
+            <td>Registers a new user</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>auth/login</td>
+            <td>Log in for existing user</td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="users-table">Users Table</h2>
+<hr>
+<pre><code>{
+     <span class="hljs-attribute">id:</span><span class="hljs-string"> integer</span> <span class="hljs-comment">// Autoincrement by database</span>
+     <span class="hljs-attribute">username</span>: <span class="hljs-built_in">String</span> <span class="hljs-comment">// unique, 50 chars max</span>
+     <span class="hljs-attribute">password</span>: <span class="hljs-built_in">String</span>
+     <span class="hljs-attribute">role</span>: <span class="hljs-built_in">String</span> 
+ }
+</code></pre>
+<h2 id="sample-add-user-data">Sample Add user Data</h2>
+<pre><code> {
+    <span class="hljs-attr">"username"</span>: <span class="hljs-string">"someone"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"123123"</span>,
+    <span class="hljs-attr">"role"</span>: <span class="hljs-string">"staff || student"</span>,
+}
+</code></pre>
+<h2 id="tickets-table">Tickets Table</h2>
+<pre><code>{
+    <span class="hljs-string">"title"</span>: <span class="hljs-keyword">String</span> <span class="hljs-number">255</span> <span class="hljs-built_in">char</span> <span class="hljs-built_in">max</span>
+    <span class="hljs-string">"description"</span>: <span class="hljs-keyword">String</span> <span class="hljs-number">255</span> <span class="hljs-built_in">char</span> <span class="hljs-built_in">max</span>
+    <span class="hljs-string">"category"</span>: <span class="hljs-keyword">String</span> <span class="hljs-number">255</span> <span class="hljs-built_in">char</span> <span class="hljs-built_in">max</span>
+    <span class="hljs-string">"open"</span>:<span class="hljs-keyword">true</span> || <span class="hljs-keyword">false</span>
+    <span class="hljs-string">"created_at"</span>: <span class="hljs-keyword">String</span> <span class="hljs-number">255</span> Database created timestamp
+    <span class="hljs-string">"user_id"</span>: integer User that created ticket
+}
+</code></pre>
+<h2 id="sample-add-ticket">Sample Add Ticket</h2>
+<pre><code>{
+    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Bad Return?"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Was writing a function and for the return I accidentally returned my girlfriend..."</span>,
+    <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Life"</span>,
+    <span class="hljs-attr">"open"</span>: <span class="hljs-string">"true"</span>,
+}
+</code></pre>
+</body>
+
+</html>

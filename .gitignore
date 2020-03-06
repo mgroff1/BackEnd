@@ -1,4 +1,3 @@
-node_modules
 
 # Logs
 logs
@@ -7,9 +6,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Runtime data
 pids
@@ -37,12 +33,10 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
 
 # Dependency directories
-node_modules/
-jspm_packages/
+api/node_modules
+jspm_packages
 
 # TypeScript v1 declaration files
 typings/

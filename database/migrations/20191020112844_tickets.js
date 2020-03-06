@@ -8,12 +8,12 @@ exports.up = function(knex) {
           .notNullable();
         tbl.string('description', 512);
         tbl.string('category', 128);
-        tbl.string('solution', 1024);
+        tbl.string('open', 1024);
         tbl
-            .boolean('assigned')
+            .boolean('open')
             .defaultTo(false);
         tbl
-            .boolean('resolved')
+            .boolean('closed')
             .defaultTo(false);
       });
 };
